@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>    
+    <nav>
+        <a href="#game">Game</a>
+        <a href="#weapon">Weapon</a>
+        <a href="#outfit">Outfit</a>
+        <a href="#entry">Entry</a>
+        <a href="#kill">Kill</a>
+    </nav>
+
+    <section id="game">
+        <h1>ABOUT OF FREE FIRE</h1>
+        <img src="./src/free fire max logo.png" alt="Free Fire Game" width="200px" height="200px">
+        <p>Free Fire is a popular mobile battle royale game developed by Garena...</p>
+    </section>
+
+    <section id="weapon">
+        <h2>ABOUT OF WEAPON</h2>
+        <img src="./src/free-fire-2021-weapon-tier-list-983433-1638213768.png" alt="Free Fire Weapons" width="200px" height="200px">
+        <p>In Free Fire, weapons play a very important role in surviving and winning battles...</p>
+    </section>
+
+    <section id="outfit">
+        <h3>ABOUT OF OUTFIT</h3>
+        <img src="./src/maxresdefault-33.jpg" alt="Free Fire Outfits" width="200px" height="200px">
+        <p>In Free Fire, outfits are special clothes and skins that players can use to make their characters look unique...</p>
+    </section>
+
+    <section id="entry">
+        <h3>ABOUT OF ENTRY</h3>
+        <iframe width="560" height="315" src="./src/Recording 2025-04-27 130431.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+        <p>Everyone has heard of the entry role and probably knows the gist of what they do...</p>
+    </section>
+
+    <section id="kill">
+        <h3>ABOUT OF KILL</h3>
+        <iframe width="560" height="315" src="./src/Recording 2025-04-27 131003.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <p>In Free Fire, killing enemies is the main goal to survive and win...</p>
+    </section>
+
+    <script>
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Back to Top Button Functionality
+        const backToTopButton = document.createElement('button');
+        backToTopButton.innerText = '↑';
+        backToTopButton.classList.add('back-to-top');
+        document.body.appendChild(backToTopButton);
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Show/Hide Back to Top Button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        // Video Autoplay Pause
+        const videos = document.querySelectorAll('iframe');
+        videos.forEach(video => {
+            video.addEventListener('play', () => {
+                videos.forEach(v => {
+                    if (v !== video) {
+                        v.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
